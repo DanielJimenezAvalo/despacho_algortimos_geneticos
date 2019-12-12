@@ -1,4 +1,4 @@
 # Genetic-Algorithm
 
 Solving simple equation:
-$$x=\sqrt{2}$$
+$\text{S}_1(N) = \sum_{p=1}^N \text{E}(p)$
