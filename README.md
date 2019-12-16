@@ -4,6 +4,7 @@
 <img src="https://latex.codecogs.com/gif.latex?a&space;&plus;&space;2b&space;&plus;&space;3c&space;&plus;&space;4d&space;=&space;30" title="a + 2b + 3c + 4d = 30" />
 
 # Economic-Dispatch-GA.py:
+  Assignment of Optimization Engineering Course
   Solving cheapest cost for generating power with specified demand
 
 # Team:
