@@ -5,6 +5,7 @@
 
 # Economic-Dispatch-GA.py:
   Assignment of Optimization Engineering Course:
+  
   Solving cheapest cost for generating power with specified demand
 
 # Team:
