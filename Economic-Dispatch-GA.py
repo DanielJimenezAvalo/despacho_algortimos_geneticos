@@ -187,8 +187,7 @@ list_cost = list()
 list_arr_cost = list()
 finish = False
 while True:
-	if not finish:
-		[finish, max_fit, solution] = GA.selection()
+	[finish, max_fit, solution] = GA.selection()
 	generation += 1
 	print("Part-", part_, "\tGeneration-", generation, "\tfitness: ", max_fit, "\t solution: ", solution)
 	if finish or (generation > max_iter):
