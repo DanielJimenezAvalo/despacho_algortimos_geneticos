@@ -216,7 +216,7 @@ fix_solution = list_solution[ind_min_cost]
 fix_arr_cost = list_arr_cost[ind_min_cost]
 
 print("cost_min_total: ", np.sum(cost_min), "\tcost_max_total: ", np.sum(cost_max), "\n")
-print("The cheapest solution is: ", fix_solution, "\twith cost: ", fix_arr_cost, "\ttotal_cost: ", min_cost)
+print("la solucion de costo minimo es : ", fix_solution, "\twith cost: ", fix_arr_cost, "\ttotal_cost: ", min_cost)
 
 delta_time = time.time() - start_time
 print("Computation Time: ", delta_time)

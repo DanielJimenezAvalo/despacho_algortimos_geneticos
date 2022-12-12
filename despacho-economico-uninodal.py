@@ -4,7 +4,15 @@ import time
 
 start_time = time.time()
 class GeneticAlgorithm:
-	def __init__(self, n_kromosom_, n_gen_, crossover_rate_, mutation_rate_, desired_fitness_, constraints_, obj_func_const_):
+	def __init__(self, 
+              n_kromosom_, 
+              n_gen_, 
+              crossover_rate_, 
+              mutation_rate_, 
+              desired_fitness_, 
+              constraints_, 
+              obj_func_const_):
+        
 		self.n_kromosom = n_kromosom_
 		self.n_gen = n_gen_
 		self.constraints = constraints_
@@ -111,24 +119,55 @@ class GeneticAlgorithm:
 			gen_mutated = ind_mutation % self.n_gen
 			self.chromosome[chrom_mutated][gen_mutated] = np.random.uniform(self.constraints[gen_mutated][1])
 
+
 Pi = list()
-Pi.append(np.array([10., 30., 50., 70.]))
-Pi.append(np.array([10., 40., 70., 100.]))
-Pi.append(np.array([10., 40., 60., 90.]))
+Pi.append(np.array([32,50,87,94]))
+Pi.append(np.array([21,34,100,122]))
+Pi.append(np.array([15,26,54,108]))
+Pi.append(np.array([22,45,55,127]))
+Pi.append(np.array([19,47,58,97]))
+Pi.append(np.array([19,33,72,147]))
+Pi.append(np.array([20,42,74,104]))
+Pi.append(np.array([24,36,60,100]))
+Pi.append(np.array([19,48,80,133]))
+Pi.append(np.array([23,49,68,108]))
+Pi.append(np.array([16,50,78,146]))
+Pi.append(np.array([25,55,81,138]))
+
 
 IHR = list()
-IHR.append(np.array([720., 820., 920., 1100.]))
-IHR.append(np.array([620., 730., 850., 1070.]))
-IHR.append(np.array([750., 810., 870., 900.]))
+IHR.append(np.array([62,95,136,175]))
+IHR.append(np.array([61,88,140,178]))
+IHR.append(np.array([69,111,141,152]))
+IHR.append(np.array([60,118,143,191]))
+IHR.append(np.array([41,119,142,172]))
+IHR.append(np.array([47,81,129,167]))
+IHR.append(np.array([46,102,134,186]))
+IHR.append(np.array([41,119,142,172]))
+IHR.append(np.array([52,84,138,178]))
+IHR.append(np.array([67,94,143,182]))
+IHR.append(np.array([46,111,141,197]))
+IHR.append(np.array([51,80,149,185]))
+
 
 fuel_cost = list()
-fuel_cost.append(1.57)
-fuel_cost.append(2.03)
-fuel_cost.append(1.86)
+fuel_cost.append(0.084)
+fuel_cost.append(0.268)
+fuel_cost.append(0.265)
+fuel_cost.append(0.756)
+fuel_cost.append(0.12)
+fuel_cost.append(0.043)
+fuel_cost.append(0.124)
+fuel_cost.append(0.436)
+fuel_cost.append(0.18)
+fuel_cost.append(0.775)
+fuel_cost.append(0.395)
+fuel_cost.append(0.059)
+
 
 cost = list()
 for x in range(len(IHR)):
-	cost.append(IHR[x]*fuel_cost[x]/1000)
+	cost.append(IHR[x]*fuel_cost[x])#/1000
 
 def least_square(P_, b_):
 	A_raw = np.array([P_**2, P_, P_**0])
@@ -163,24 +202,48 @@ for m in range(len(power_max)):
 	est_cost_arange.append(temp_)
 
 fig, ax = plt.subplots()
-ax.plot(arange[0], est_cost_arange[0], '-g', label='Generator 1')
-ax.plot(arange[1], est_cost_arange[1], '-b', label='Generator 2')
-ax.plot(arange[2], est_cost_arange[2], '-k', label='Generator 3')
-legend = ax.legend(loc='upper center', shadow=True)
+ax.plot(arange[0], est_cost_arange[0], '-g', label='G1')
+ax.plot(arange[1], est_cost_arange[1], '-b', label='G2')
+ax.plot(arange[2], est_cost_arange[2], '-k', label='G3')
+ax.plot(arange[3], est_cost_arange[3], '-r', label='G4')
+ax.plot(arange[4], est_cost_arange[4], '-c', label='G5')
+ax.plot(arange[5], est_cost_arange[5], '-m', label='G6')
+ax.plot(arange[6], est_cost_arange[6], '-y', label='G7')
+ax.plot(arange[7], est_cost_arange[7], '-w', label='G8')
+ax.plot(arange[8], est_cost_arange[8], '-g', label='G9')
+ax.plot(arange[9], est_cost_arange[9], '-b', label='G10')
+ax.plot(arange[10], est_cost_arange[10], '-k', label='G11')
+ax.plot(arange[11], est_cost_arange[11], '-r', label='G12')
+legend = ax.legend(loc='upper right', shadow=True)
 
 n_kromosom = 100
-obj_func_const = np.array([1,1,1,-150])
+#obj_func_const = np.array([1,1,1,-200])
+obj_func_const = np.array([1,1,1,1,1,1,1,1,1,1,1,1,-200])
 n_gen = obj_func_const.shape[0]-1
-constraints = [[power_min[0],power_max[0]], [power_min[1],power_max[1]], [power_min[2],power_max[2]]]
+constraints = [[power_min[0],power_max[0]], 
+               [power_min[1],power_max[1]], 
+               [power_min[2],power_max[2]],
+               [power_min[3],power_max[3]],
+               [power_min[4],power_max[4]],
+               [power_min[5],power_max[5]],
+               [power_min[6],power_max[6]],
+               [power_min[7],power_max[7]],
+               [power_min[8],power_max[8]],
+               [power_min[9],power_max[9]],
+               [power_min[10],power_max[10]],
+               [power_min[11],power_max[11]]
+               ]
+               
 crossover_rate = 0.7
 mutation_rate = 0.5
 desired_fitness = 0.95
+
 
 GA = GeneticAlgorithm(n_kromosom, n_gen, crossover_rate, mutation_rate, desired_fitness, constraints, obj_func_const)
 
 part_ = 1
 generation = 0
-max_iter = 500
+max_iter = 200
 size_to_compare = 50
 list_solution = list()
 list_cost = list()
@@ -215,13 +278,13 @@ ind_min_cost = list(list(set(zip(*ind_min_cost)))[0])[0]
 fix_solution = list_solution[ind_min_cost]
 fix_arr_cost = list_arr_cost[ind_min_cost]
 
-print("cost_min_total: ", np.sum(cost_min), "\tcost_max_total: ", np.sum(cost_max), "\n")
-print("The cheapest solution is: ", fix_solution, "\twith cost: ", fix_arr_cost, "\ttotal_cost: ", min_cost)
+print("costo_min_total: ", np.sum(cost_min), "\tcosto_max_total: ", np.sum(cost_max), "\n")
+print("el menor costo de operacion es: ", fix_solution, "\tcon un costo de: ", fix_arr_cost, "\tcosto_total: ", min_cost)
 
 delta_time = time.time() - start_time
-print("Computation Time: ", delta_time)
+print("tiempo de ejecucion: ", delta_time)
 
 ax.plot(fix_solution[0], fix_arr_cost[0], '^g', fix_solution[1], fix_arr_cost[1], '^b', fix_solution[2], fix_arr_cost[2], '^k')
-plt.xlabel("Power-i (MW)")
-plt.ylabel("Cost ($/kWh)")
+plt.xlabel("Potencia-i (MW)")
+plt.ylabel("Costo ($/kWh)")
 plt.show()
